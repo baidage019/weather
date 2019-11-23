@@ -10,3 +10,4 @@
 
 #### Usage
 * To use the built jar, run `java -jar weather-1.0-SNAPSHOT.jar`
+* To quit the program, type `q`.
