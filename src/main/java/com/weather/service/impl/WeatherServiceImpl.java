@@ -3,7 +3,7 @@ package com.weather.service.impl;
 import com.weather.config.ExternalAPI;
 import com.weather.dao.FutureWeather;
 import com.weather.dao.Weather;
-import com.weather.service.GetWeather;
+import com.weather.service.WeatherService;
 import com.weather.utils.WeatherUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,8 +18,8 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Arrays;
 import java.util.List;
 
-public class GetWeatherImpl implements GetWeather {
-    private static final Logger logger = LoggerFactory.getLogger(GetWeatherImpl.class);
+public class WeatherServiceImpl implements WeatherService {
+    private static final Logger logger = LoggerFactory.getLogger(WeatherServiceImpl.class);
 
     @Autowired
     private RestTemplate restTemplate;
@@ -35,6 +35,8 @@ public class GetWeatherImpl implements GetWeather {
             final FutureWeather body = restTemplate.exchange(url, HttpMethod.GET, entity, FutureWeather.class).getBody();
             return body.getHourlyForecasts().getForecastLocation().getForecast();
         } catch (RestClientException e) {
+            // There are many ways to handle this exception, either build application customer exception,
+            // like weatherBadException or simple return null.
             logger.error(e.getMessage());
             return null;
         }

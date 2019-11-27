@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * This interface is a generic interface which helps to retrieve the weather list based on the product.
  */
-public interface GetWeather {
+public interface WeatherService {
     /**
      * get a list of weather based on the passed in parameters.
      * @param zipCode - zip code

@@ -1,9 +1,9 @@
 package com.weather.config;
 
-import com.weather.service.GetTomorrowWeatherService;
-import com.weather.service.GetWeather;
-import com.weather.service.impl.GetTomorrowWeatherImpl;
-import com.weather.service.impl.GetWeatherImpl;
+import com.weather.service.TomorrowWeatherDetailService;
+import com.weather.service.WeatherService;
+import com.weather.service.impl.TomorrowWeatherDetailImpl;
+import com.weather.service.impl.WeatherServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
@@ -27,12 +27,12 @@ public class WeatherConfig {
     }
 
     @Bean
-    public GetTomorrowWeatherService getTomorrowWeatherService() {
-        return new GetTomorrowWeatherImpl();
+    public TomorrowWeatherDetailService tomorrowWeatherDetailService() {
+        return new TomorrowWeatherDetailImpl();
     }
 
     @Bean
-    public GetWeather getWeather() {
-        return new GetWeatherImpl();
+    public WeatherService weatherService() {
+        return new WeatherServiceImpl();
     }
 }

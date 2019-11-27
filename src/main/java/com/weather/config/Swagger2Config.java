@@ -11,10 +11,13 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 public class Swagger2Config {
+    private static final String HOST = "host.example.com";
+    private static final String BASE_PACK = "org.springframework.boot";
+
     @Bean
     public Docket api() {
-        return new Docket(DocumentationType.SWAGGER_2).useDefaultResponseMessages(false).host("host.example.com").select()
-                .apis(Predicates.not(RequestHandlerSelectors.basePackage("org.springframework.boot")))
+        return new Docket(DocumentationType.SWAGGER_2).useDefaultResponseMessages(false).host(HOST).select()
+                .apis(Predicates.not(RequestHandlerSelectors.basePackage(BASE_PACK)))
                 .build();
     }
 }

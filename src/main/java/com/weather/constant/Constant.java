@@ -1,7 +1,6 @@
 package com.weather.constant;
 
 public class Constant {
-    public static final String Q = "q";
 
     public static final String ZIPCODE_REGEX = "^[0-9]{5}(?:-[0-9]{4})?$";
 
@@ -13,7 +12,7 @@ public class Constant {
 
     public static final String APP_CODE = "AJKnXv84fjrb0KIHawS0Tg";
 
-    public enum PRODUCT{
+    public enum PRODUCT {
         NEXT_SEVEN_DAYS("forecast_7days"),
         NEXT_SEVEN_DAYS_HOURLY("forecast_hourly");
 
@@ -24,6 +23,22 @@ public class Constant {
         }
 
         public String getValue() {
+            return value;
+        }
+    }
+
+    public enum StatusCode {
+        SUCCESS(0),
+
+        BAD_RQ(400);
+
+        private int value;
+
+        StatusCode(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
             return value;
         }
     }

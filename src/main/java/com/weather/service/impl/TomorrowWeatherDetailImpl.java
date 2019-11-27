@@ -1,10 +1,10 @@
 package com.weather.service.impl;
 
 import com.weather.config.ExternalAPI;
-import com.weather.constant.Constant;
+import com.weather.dao.HourlyReport;
 import com.weather.dao.Weather;
-import com.weather.service.GetTomorrowWeatherService;
-import com.weather.service.GetWeather;
+import com.weather.service.TomorrowWeatherDetailService;
+import com.weather.service.WeatherService;
 import org.apache.commons.lang3.time.DateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,26 +14,27 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static com.weather.constant.Constant.*;
 
-public class GetTomorrowWeatherImpl implements GetTomorrowWeatherService {
-    private static final Logger logger = LoggerFactory.getLogger(GetTomorrowWeatherImpl.class);
+public class TomorrowWeatherDetailImpl implements TomorrowWeatherDetailService {
+    private static final Logger logger = LoggerFactory.getLogger(TomorrowWeatherDetailImpl.class);
 
     @Autowired
-    private GetWeather getWeather;
+    private WeatherService weatherService;
 
     @Autowired
     private DateFormat dateFormat;
 
     @Override
     public List<Weather> get(String zipCode, ExternalAPI externalAPI) {
-        List<Weather> nextSevernDays = getWeather.get(zipCode, externalAPI,
+        List<Weather> nextSevernDays = weatherService.get(zipCode, externalAPI,
                 PRODUCT.NEXT_SEVEN_DAYS_HOURLY.getValue(), true, APP_ID, APP_CODE);
 
-        if(nextSevernDays == null){
+        if (nextSevernDays == null) {
             return null;
         }
 
@@ -57,5 +58,21 @@ public class GetTomorrowWeatherImpl implements GetTomorrowWeatherService {
             return false;
         }).collect(Collectors.toList());
         return collect;
+    }
+
+    @Override
+    public List<HourlyReport> getHourlyReports(String zipCode, ExternalAPI externalAPI) {
+        List<Weather> nextDayWeather = get(zipCode, externalAPI);
+        if (nextDayWeather == null) {
+            return null;
+        }
+        List<HourlyReport> reports = new LinkedList<>();
+        nextDayWeather.forEach(weather -> {
+            HourlyReport hourlyReport = new HourlyReport();
+            hourlyReport.setTemperature(Float.parseFloat(weather.getTemperature()));
+            hourlyReport.setDate(weather.getLocalDate().toString());
+            reports.add(hourlyReport);
+        });
+        return reports;
     }
 }
