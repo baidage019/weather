@@ -10,6 +10,7 @@
 
 #### Usage
 * To Start the restful service, you can run `java -jar weather-1.0-SNAPSHOT.jar` in the target folder.
+* Server port number: 8080
 * Once the server is up and running, to read the API documentation you can use this url via the browser: `http://localhost:8080/doc`
 * After the restful service is start running on port 8080, you can either use POSTMAN test tool to retrieve the information or use `curl` to retrieve the data.
 * Example test use curl  ---  `curl -v http://localhost:8080/get_tomorrow_weather_detail?zipCode=85054`
