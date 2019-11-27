@@ -64,6 +64,9 @@ public class UnitTests {
         objectMapper = new ObjectMapper();
     }
 
+    /**
+     * This test does the end to end testing for exposed API.
+     */
     @Test
     public void TomorrowWeatherAPITestSuccess() throws Exception {
         String uri = "/get_tomorrow_weather_detail?zipCode=85054";
@@ -80,6 +83,9 @@ public class UnitTests {
         assertNotNull(tomorrowWeatherRS.getCoolestHour());
     }
 
+    /**
+     * This test does the end to end testing for exposed API.
+     */
     @Test
     public void TomorrowWeatherAPITestBadZipCode1() throws Exception {
         String uri = "/get_tomorrow_weather_detail?zipCode=88888";
@@ -94,6 +100,9 @@ public class UnitTests {
         assertEquals(Constant.StatusCode.BAD_RQ.getValue(), tomorrowWeatherRS.getStatusCode());
     }
 
+    /**
+     * This test does the end to end testing for exposed API.
+     */
     @Test(expected = NestedServletException.class)
     public void TomorrowWeatherAPITestBadZipCode2() throws Exception {
         String uri = "/get_tomorrow_weather_detail?zipCode=6524";
@@ -101,9 +110,6 @@ public class UnitTests {
                 .accept(MediaType.APPLICATION_JSON_VALUE)).andExpect(status().isInternalServerError());
     }
 
-    /**
-     * This unit test does the end to end testing for the controller.
-     */
     @Test
     public void endToEndTestForController() {
         TomorrowWeatherRS tomorrowWeather = weatherController.getTomorrowWeather("85054");
