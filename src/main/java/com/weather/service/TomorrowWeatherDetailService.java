@@ -11,8 +11,7 @@ import java.util.List;
  */
 public interface TomorrowWeatherDetailService {
     /**
-     *
-     * @param zipCode - zip code
+     * @param zipCode     - zip code
      * @param externalAPI - external API which contains url
      * @return - A list of detail weather report for tomorrow weather.
      */
@@ -20,9 +19,10 @@ public interface TomorrowWeatherDetailService {
 
     /**
      * This method is a easy way to retrieve the hourly report for the next day.
-     * Compared with get method in this interface, get method can be used in more situations, because it has more detail information about the weather.
+     * Compared with get method in this interface, get method can be used in more situations,
+     * because it has more detail information about the weather.
      *
-     * @param zipCode - zip code
+     * @param zipCode     - zip code
      * @param externalAPI - external API which contains url
      * @return - A list of short hourly weather report for tomorrow weather.
      */

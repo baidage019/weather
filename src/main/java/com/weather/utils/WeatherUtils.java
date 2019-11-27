@@ -2,11 +2,6 @@ package com.weather.utils;
 
 import com.weather.config.ExternalAPI;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import static com.weather.constant.Constant.ZIPCODE_REGEX;
-
 public class WeatherUtils {
     private static final String URL_PATTERN = "%s?product=%s&zipcode=%s&oneobservation=%b&app_id=%s&app_code=%s";
 
