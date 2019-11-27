@@ -78,15 +78,6 @@ public class UnitTests {
         assertEquals(Constant.StatusCode.SUCCESS.getValue(), tomorrowWeatherRS.getStatusCode());
         assertTrue(tomorrowWeatherRS.getHourlyReports().size() > 0);
         assertNotNull(tomorrowWeatherRS.getCoolestHour());
-
-        uri = "/get_tomorrow_weather_detail?zipCode=88888";
-        mvcResult = mvc.perform(get(uri)
-                .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
-        status = mvcResult.getResponse().getStatus();
-        assertEquals(200, status);
-        content = mvcResult.getResponse().getContentAsString();
-        tomorrowWeatherRS = objectMapper.readValue(content, TomorrowWeatherRS.class);
-        assertEquals(Constant.StatusCode.BAD_RQ.getValue(), tomorrowWeatherRS.getStatusCode());
     }
 
     @Test
