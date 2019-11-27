@@ -14,7 +14,8 @@ public class Constant {
     public static final String APP_CODE = "AJKnXv84fjrb0KIHawS0Tg";
 
     public enum PRODUCT{
-        NEXT_SEVEN_DAYS("forecast_7days");
+        NEXT_SEVEN_DAYS("forecast_7days"),
+        NEXT_SEVEN_DAYS_HOURLY("forecast_hourly");
 
         private String value;
 

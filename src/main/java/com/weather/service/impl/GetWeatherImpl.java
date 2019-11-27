@@ -33,7 +33,7 @@ public class GetWeatherImpl implements GetWeather {
         HttpEntity entity = new HttpEntity(headers);
         try {
             final FutureWeather body = restTemplate.exchange(url, HttpMethod.GET, entity, FutureWeather.class).getBody();
-            return body.getForecasts().getForecastLocation().getForecast();
+            return body.getHourlyForecasts().getForecastLocation().getForecast();
         } catch (RestClientException e) {
             logger.error(e.getMessage());
             return null;

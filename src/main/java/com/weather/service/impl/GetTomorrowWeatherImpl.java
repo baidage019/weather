@@ -31,7 +31,7 @@ public class GetTomorrowWeatherImpl implements GetTomorrowWeatherService {
     @Override
     public List<Weather> get(String zipCode, ExternalAPI externalAPI) {
         List<Weather> nextSevernDays = getWeather.get(zipCode, externalAPI,
-                Constant.PRODUCT.NEXT_SEVEN_DAYS.getValue(), true, APP_ID, APP_CODE);
+                PRODUCT.NEXT_SEVEN_DAYS_HOURLY.getValue(), true, APP_ID, APP_CODE);
 
         if(nextSevernDays == null){
             return null;

@@ -1,13 +1,13 @@
 package com.weather.dao;
 
 public class FutureWeather {
-    private Forecasts forecasts;
+    private HourlyForecasts hourlyForecasts;
 
-    public Forecasts getForecasts() {
-        return forecasts;
+    public HourlyForecasts getHourlyForecasts() {
+        return hourlyForecasts;
     }
 
-    public void setForecasts(Forecasts forecasts) {
-        this.forecasts = forecasts;
+    public void setHourlyForecasts(HourlyForecasts hourlyForecasts) {
+        this.hourlyForecasts = hourlyForecasts;
     }
 }
